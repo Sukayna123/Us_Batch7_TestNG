@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
@@ -13,8 +14,8 @@ import java.time.Duration;
 
 public class DriverClass {
 public static WebDriver driver;
-
-    @BeforeClass
+public static WebDriverWait wait;
+    @BeforeClass(alwaysRun = true)
     public void startingSettings(){
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
@@ -35,7 +36,7 @@ loging();
         loginButton.click();
     }
 
-    @AfterTest
+    @AfterTest(alwaysRun = true)
     public void finishSetting(){
         try {
             Thread.sleep(3000);
