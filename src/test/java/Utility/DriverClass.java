@@ -13,14 +13,16 @@ import org.testng.annotations.BeforeClass;
 import java.time.Duration;
 
 public class DriverClass {
+
 public static WebDriver driver;
 public static WebDriverWait wait;
     @BeforeClass(alwaysRun = true)
     public void startingSettings(){
-        WebDriverManager.chromedriver().setup();
+      //  WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        wait=new WebDriverWait(driver,Duration.ofSeconds(30));
 loging();
 
     }
